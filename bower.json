@@ -1,0 +1,22 @@
+{
+  "name": "csgocfgr-plugins",
+  "version": "0.1.0",
+  "authors": [
+    "Timothy Warrington <tim.warrin@gmail.com>"
+  ],
+  "description": "A group of plugins used in the csgocfgr website",
+  "keywords": [
+    "plugins",
+    "csgocfgr",
+    "csgoconfigr"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
