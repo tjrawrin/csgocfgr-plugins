@@ -4,6 +4,12 @@
   "authors": [
     "Timothy Warrington <tim.warrin@gmail.com>"
   ],
+  "main": [
+    "blob.js",
+    "filesaver.js",
+    "informationlookup.js",
+    "informationpopup.js"
+  ],
   "description": "A group of plugins used in the csgocfgr website",
   "keywords": [
     "plugins",
