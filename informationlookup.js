@@ -285,7 +285,7 @@ var CMDLookupTable = {
   },
   'cl_showloadout': {
     'title': 'Show Loadout',
-    'description': '<p><strong>Show Loadout</strong> toggles the display of the current loadout.</p><p><strong>Default</strong>: (1) On</p>'
+    'description': '<p><strong>Show Loadout</strong> determines whether the loadout is always visible or automatically hides after a short period.</p><p><strong>Default</strong>: (1) On</p>'
   },
   'cl_showpos': {
     'title': 'Speed and Detailed Position',
