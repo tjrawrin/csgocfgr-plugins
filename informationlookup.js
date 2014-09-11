@@ -48,7 +48,7 @@ var CMDLookupTable = {
     'description': '<p><pre>Apply cos(angle) * weight</pre> before pan law.</p><p><strong>Default</strong>: 1</p>'
   },
   'snd_legacy_surround': {
-    'snd_legacy_surround',
+    'title': 'snd_legacy_surround',
     'description': '<p>Sometimes helps correct 3D surround issues, enable this only if you are experiencing problems with 3D sound.</p><p><strong>Default</strong>: (0) Off</p>'
   },
   'snd_mute_losefocus': {
