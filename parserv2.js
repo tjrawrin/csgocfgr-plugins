@@ -19,8 +19,8 @@ ConfigParser.prototype.Init = function () {
  * to look them up multiple times.
  */
 ConfigParser.prototype.CacheElements = function () {
-  this.$inputFile = $('#upload-config-file');
-  this.$inputText = $('#upload-config-text');
+  this.$inputFile = $('input[data-upload="file"]');
+  this.$inputText = $('textarea[data-upload="text"]');
 };
 
 /**
@@ -194,7 +194,7 @@ ConfigParser.prototype.ReformatContentArray = function (contentArray) {
       for(var j = 2; j < newContentArray[i].length; j++) {  // handle commands
         newContentArray[i][1] += ' ' + newContentArray[i][j];
         newContentArray[i][j] = null;
-      } 
+      }
     }
   }
 
@@ -297,7 +297,7 @@ ConfigParser.prototype.GetKeyAsText = function (key) {
     case 'key[':
       keyName = 'keyLbracket';
       break;
-    case 'key]': 
+    case 'key]':
       keyName = 'keyRbracket';
       break;
     case 'key\\':
