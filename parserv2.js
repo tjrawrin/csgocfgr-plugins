@@ -348,7 +348,6 @@ ConfigParser.prototype.GetKeyAsText = function (key) {
  * value - A string containg the value to set the option to.
  */
 ConfigParser.prototype.AddOptionToConfigExport = function (key, value) {
-  console.log('Key: %s | Value: %s', key, value);
   this.config.push({
     'key': key,
     'value': value
