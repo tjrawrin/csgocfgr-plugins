@@ -4,6 +4,7 @@
  * Parse .cfg files from file input or pasted text.
  */
 var ConfigParser = function () {
+    this.config = null;
 };
 
 /**
@@ -147,7 +148,8 @@ ConfigParser.prototype.CleanFileContents = function (content) {
   var newContent = content;
 
   // remove comments to the end of the line
-  newContent = newContent.replace(/\s+\/{2,}.*/g, '');
+  //newContent = newContent.replace(/\s+\/{2,}.*/g, '');
+  newContent = newContent.replace(/\/{2,}.*/g, '');
 
   // remove extra white space
   newContent = newContent.replace(/\r|\n{2,}/g, '\n');
@@ -203,19 +205,32 @@ ConfigParser.prototype.ReformatContentArray = function (contentArray) {
 
 /**
  * Load a parsed config array into the store model.
+ * contentArray - An array of the parsed config file.
  */
 ConfigParser.prototype.WriteConfigToModel = function (contentArray) {
-  window.loadedConfig = [];
+  this.config = [];
+
   for(var i = 0, length = contentArray.length; i < length; i++) {
-    // TODO: Replace WriteOutputToPage to an actual method for updating the data
-    // store model with the key and value.
     if(contentArray[i][0] == 'bind') {
-      this.WriteOutputToPage(this.FormatKeyAsModelKeybind(contentArray[i][1]), contentArray[i][2]);
+      this.AddOptionToConfigExport(this.FormatKeyAsModelKeybind(contentArray[i][1]), contentArray[i][2]);
     }
     else if(contentArray[i][0]) {
-      this.WriteOutputToPage(this.FormatKeyAsModelCommand(contentArray[i][0]), contentArray[i][1]);
+      this.AddOptionToConfigExport(this.FormatKeyAsModelCommand(contentArray[i][0]), this.RemoveQuotes(contentArray[i][1]));
     }
   }
+};
+
+/**
+ * Remove quotation marks from a string.
+ * value - The string to remove all quote characters from.
+ * Returns a string with all quote characters removed.
+ */
+ConfigParser.prototype.RemoveQuotes = function (value) {
+  var newValue = value;
+
+  newValue = newValue.replace(/"/g, '');
+
+  return value;
 };
 
 /**
@@ -328,19 +343,13 @@ ConfigParser.prototype.GetKeyAsText = function (key) {
 };
 
 /**
- * TEMPORARY
- * Write a key, value pair to the screen for debug
+ * Add a key, value pair object to the this.config property.
+ * key - A string containing the config option name.
+ * value - A string containg the value to set the option to.
  */
-ConfigParser.prototype.WriteOutputToPage = function (key, value) {
-/*  $('.content-container').find('hr').remove();
-  $('.content-container').find('br').remove();
-  $('.content-container').find('pre').remove();
-  $('.content-container').append('<pre>KEY: ' + key + '</pre>');
-  $('.content-container').append('<pre>VALUE: ' + value + '</pre><br />');
-  $('.content-container').append('<pre>' + key + '</pre>');
-*/
-    console.log('Key: %s | Value: %s', key, value);
-  window.loadedConfig.push({
+ConfigParser.prototype.AddOptionToConfigExport = function (key, value) {
+  console.log('Key: %s | Value: %s', key, value);
+  this.config.push({
     'key': key,
     'value': value
   });
