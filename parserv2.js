@@ -205,6 +205,7 @@ ConfigParser.prototype.ReformatContentArray = function (contentArray) {
  * Load a parsed config array into the store model.
  */
 ConfigParser.prototype.WriteConfigToModel = function (contentArray) {
+  window.loadedConfig = [];
   for(var i = 0, length = contentArray.length; i < length; i++) {
     // TODO: Replace WriteOutputToPage to an actual method for updating the data
     // store model with the key and value.
@@ -339,6 +340,10 @@ ConfigParser.prototype.WriteOutputToPage = function (key, value) {
   $('.content-container').append('<pre>' + key + '</pre>');
 */
     console.log('Key: %s | Value: %s', key, value);
+  window.loadedConfig.push({
+    'key': key,
+    'value': value
+  });
 };
 
 $(document).ready(function() {
