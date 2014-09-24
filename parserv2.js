@@ -58,14 +58,10 @@ ConfigParser.prototype.DoParse = function (event) {
 ConfigParser.prototype.ParseFromPaste = function () {
   console.log('ParseFromPaste');
   var pasteContent = this.$inputText.val();
-  $('.content-container').append('<hr><pre>' + pasteContent + '</pre>');
 
   pasteContent = this.CleanFileContents(pasteContent);
-  $('.content-container').append('<hr><pre>' + pasteContent + '</pre>');
   var contentArray = this.ContentStringToArray(pasteContent);
-  $('.content-container').append('<hr><pre>' + contentArray + '</pre>');
   contentArray = this.ReformatContentArray(contentArray);
-  $('.content-container').append('<hr><pre>' + contentArray + '</pre>');
 
   this.WriteConfigToModel(contentArray);
 };
